@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">Current veterinarians</h1>
+
+
+
+<div class="card">
+
+  
+  <div class="card-content">
+
+    <a href="/vets/0" class="button is-primary is-small is-pulled-right">+ Add new</a>
+    <table class="table is-fullwidth is-striped">
+
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for vets in vets %}
+        <tr>
+          <td>{{ vets.name }}</td>
+          <td>
+
+            <a href="/vets/{{ vets.id}}" class="button is-primary is-small">Edit</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

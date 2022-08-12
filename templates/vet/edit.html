@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="title">Edit Veterinary</h1>
+
+<div class="card">
+
+    <header class="card-header">
+      <p class="card-header-title"> Edit veterinary</p>
+
+      <a href="/vets/delete/{{ vet.id }}" class="button is-danger is-small is-pulled-right mt-3 mr-3">Delete</a>
+
+    </header>
+    <div class="card-content">
+
+
+        <form method="post" action="/vets/save">
+
+
+            
+            <input type="hidden" name="id" value="{{ vet.id }}" />
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Name</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <input class="input" type="text" name="name" value="{{ vet.name }}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="field is-horizontal">
+                <div class="field-label">
+                    <!-- Left empty for spacing -->
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="field is-grouped is-grouped-centered">
+                            
+                            <div class="control">
+                                <button type="submit" class="button is-primary">
+                                    <span>Save</span>
+                                </button>
+                            </div>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+            
+        </form>
+    </div>
+</div>
+{% endblock %}

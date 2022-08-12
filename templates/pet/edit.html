@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="title">Edit Pet</h1>
+
+<div class="card">
+
+    <header class="card-header">
+      <p class="card-header-title"> Edit pet</p>
+      <a href="/pets/delete/{{ pet.id }}" class="button is-danger is-small is-pulled-right mt-3 mr-3">Delete</a>
+    </header>
+    <div class="card-content">
+        <form method="post" action="/pets/save">
+
+
+            
+            <input type="hidden" name="id" value="{{ pet.id }}" />
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Name</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <input class="input" type="text" name="name" value="{{ pet.name }}" />
+                        </div>
+                    </div>
+
+                    <div class="field-label is-normal">
+                        <label class="label">Type</label>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <select class="select" name="pet_type">
+                                {% for id, t in pet_types %}
+                                <option value="{{ id }}" {% if id | int == pet.pet_type %}
+                                        selected
+                                        {% endif %}>{{ t }}</option>
+                                {% endfor %}
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="field-label is-normal">
+                        <label class="label">Age</label>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <input class="input" type="number" min="1" name="age" value="{{ pet.age }}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Current vet</labelm>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+
+                            <select class="select" name="current_vet">
+                                <option value="0"></option>
+                                {% for vet in vets %}
+                                 <option value="{{ vet.id }}" {%if pet.vet_id == vet.id %} selected {% endif %}>{{ vet.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="field is-horizontal is-grouped">
+                <div class="field-label is-normal">
+                    <label class="label">Owner name</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <input class="input" type="text" name="owner_name" value="{{ pet.owner_name }}" />
+                        </div>
+                    </div>
+
+                    <div class="field-label is-normal">
+                        <label class="label">Phone</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <input class="input" type="text" name="owner_phone" value="{{ pet.owner_phone }}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+
+
+            <div class="field is-horizontal">
+                <div class="field-label">
+                    <!-- Left empty for spacing -->
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="field is-grouped is-grouped-centered">
+                            
+                            <div class="control">
+                                <button type="submit" class="button is-primary">
+                                    <span>Save</span>
+                                </button>
+                            </div>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+            
+        </form>
+    </div>
+</div>
+{% endblock %}

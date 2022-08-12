@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">Pet list</h1>
+
+<div class="card">
+
+  
+  <div class="card-content">
+    <a href="/pets/0" class="button is-primary is-small is-pulled-right">+ Add new</a>
+    <table class="table is-fullwidth is-striped">
+
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Age</th>
+          <th>Owner name</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for pet in pets %}
+        <tr>
+          <td>{{ pet.name }}</td>
+          <td>
+            {{ pet_types[pet.pet_type] }}
+          </td>
+          <td>{{ pet.age }}</td>
+          <td>{{ pet.owner_name }}</td>
+          <td>{{ pet.owner_phone }}</td>
+          <td>
+            <a href="/pets/{{ pet.id}}" class="button is-primary is-small">Edit</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
